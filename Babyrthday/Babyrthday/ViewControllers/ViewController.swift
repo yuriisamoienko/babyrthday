@@ -46,7 +46,9 @@ final class ViewController: UIViewController, UITextFieldDelegate {
         if let picker = self.birthdayDatePicker {
             picker.tintColor = .appThemeBackground
             picker.borderColor = .appThemeBackground
-            picker.date = Date()
+            let currentDate = Date()
+            picker.date = currentDate
+            picker.maximumDate = currentDate
             picker.onValueChandedCallback = { [weak self] _ in
                 self?.isBirthdayDateSet = true
             }
