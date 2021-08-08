@@ -141,8 +141,13 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate, Detail
                 PhotoChooseService(in: self)
                     .setMaximumSelectionCount(1)
                     .pickImage { [weak self] images in
-                        guard let image = images.first else { return }
-                        self?.presenter.setPhoto(image)
+                        guard let self = self,
+                              let image = images.first
+                        else {
+                            return
+                        }
+                        self.presenter.setPhoto(image)
+                        self.presenter.savePhoto(image)
                     }
             }
             imageView.addGestureRecognizer(gestureRecognizer)
