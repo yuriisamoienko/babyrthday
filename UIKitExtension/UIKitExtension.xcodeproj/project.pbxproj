@@ -12,6 +12,10 @@
 		5A8BEFD226BFD33800C42C80 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEFD126BFD33800C42C80 /* UIColor+Extension.swift */; };
 		5A8BF00126BFDBAF00C42C80 /* UIEdgeInsets+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF00026BFDBAF00C42C80 /* UIEdgeInsets+Extension.swift */; };
 		5A8BF00326BFDC5300C42C80 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF00226BFDC5300C42C80 /* UIView+Extension.swift */; };
+		5A8BF00B26BFE14300C42C80 /* IBTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF00A26BFE14300C42C80 /* IBTapGestureRecognizer.swift */; };
+		5A8BF00D26BFE56600C42C80 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF00C26BFE56600C42C80 /* UIButton+Extension.swift */; };
+		5A8BF00F26BFE5F200C42C80 /* IBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF00E26BFE5F200C42C80 /* IBButton.swift */; };
+		5A8BF02626BFED9E00C42C80 /* IBDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF02526BFED9E00C42C80 /* IBDatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		5A8BEFD126BFD33800C42C80 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5A8BF00026BFDBAF00C42C80 /* UIEdgeInsets+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Extension.swift"; sourceTree = "<group>"; };
 		5A8BF00226BFDC5300C42C80 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		5A8BF00A26BFE14300C42C80 /* IBTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		5A8BF00C26BFE56600C42C80 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		5A8BF00E26BFE5F200C42C80 /* IBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBButton.swift; sourceTree = "<group>"; };
+		5A8BF02526BFED9E00C42C80 /* IBDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,9 @@
 		5A8BEFC326BFCDB200C42C80 /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
+				5A8BF00A26BFE14300C42C80 /* IBTapGestureRecognizer.swift */,
+				5A8BF00E26BFE5F200C42C80 /* IBButton.swift */,
+				5A8BF02526BFED9E00C42C80 /* IBDatePicker.swift */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -84,6 +95,7 @@
 				5A8BEFD126BFD33800C42C80 /* UIColor+Extension.swift */,
 				5A8BF00026BFDBAF00C42C80 /* UIEdgeInsets+Extension.swift */,
 				5A8BF00226BFDC5300C42C80 /* UIView+Extension.swift */,
+				5A8BF00C26BFE56600C42C80 /* UIButton+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -169,8 +181,12 @@
 			files = (
 				5A8BF00126BFDBAF00C42C80 /* UIEdgeInsets+Extension.swift in Sources */,
 				5A8BEFC726BFCDEB00C42C80 /* UIViewController+Extension.swift in Sources */,
+				5A8BF00B26BFE14300C42C80 /* IBTapGestureRecognizer.swift in Sources */,
 				5A8BF00326BFDC5300C42C80 /* UIView+Extension.swift in Sources */,
+				5A8BF02626BFED9E00C42C80 /* IBDatePicker.swift in Sources */,
+				5A8BF00F26BFE5F200C42C80 /* IBButton.swift in Sources */,
 				5A8BEFD226BFD33800C42C80 /* UIColor+Extension.swift in Sources */,
+				5A8BF00D26BFE56600C42C80 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

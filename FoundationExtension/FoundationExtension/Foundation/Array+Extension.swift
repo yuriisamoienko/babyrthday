@@ -1,5 +1,5 @@
 //
-//  String+Extension.swift
+//  Array+Extension.swift
 //  FoundationExtension
 //
 //  Created by Yurii Samoienko on 08.08.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension String {
+public extension Array {
     
     // MARK: Public Properties
     
@@ -15,13 +15,6 @@ public extension String {
         get {
             return isEmpty == false
         }
-    }
-    
-    // MARK: Public Functions
-
-    func substring(to index: Int) -> Self {
-        let result = (self as NSString).substring(to: index)
-        return result
     }
 
 }

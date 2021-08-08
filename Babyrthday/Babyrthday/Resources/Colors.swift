@@ -16,6 +16,6 @@ import UIKit
 
 extension UIColor {
     
-    static var appThemeBackground: UIColor = .init(hexString: "7FCDDE")
+    static var appThemeBackground: UIColor = .red // .init(hexString: "7FCDDE")
 
 }
