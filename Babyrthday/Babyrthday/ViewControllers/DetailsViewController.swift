@@ -53,6 +53,7 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate, Detail
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        showBirthdayScreen() // for development
     }
     
     // MARK: UITextFieldDelegate
@@ -170,15 +171,20 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate, Detail
         self.updateNextButtonEnabled()
     }
     
-    func updateNextButtonEnabled() {
+    private func updateNextButtonEnabled() {
         updateNextButtonEnabled(with: nameTextField.text)
     }
     
-    func updateNextButtonEnabled(with text: String?) {
+    private func updateNextButtonEnabled(with text: String?) {
         guard let btn = self.nextButton else { return }
         let enabled = isBirthdayDateSet && (text?.isNotEmpty ?? false)
         btn.isEnabled = enabled
         btn.backgroundColor = enabled ? .appThemeBackground : .appThemeBackground.withAlphaComponent(0.3)
+    }
+    
+    private func showBirthdayScreen() {
+        let vc = BirthdayScreenViewController.createWithXib()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

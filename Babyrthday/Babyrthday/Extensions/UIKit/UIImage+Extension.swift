@@ -13,6 +13,9 @@ extension UIImage {
         var photoPlaceholder: UIImage? {
             UIImage(named: "photoPlaceholder")
         }
+        var arrowBackBlue: UIImage? {
+            UIImage(named: "arrowBackBlue")
+        }
     }
     
     static var assets: Assets {
