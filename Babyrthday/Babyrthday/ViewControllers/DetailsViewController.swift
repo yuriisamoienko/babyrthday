@@ -9,6 +9,16 @@ import FoundationExtension
 import UIKit
 import UIKitExtension
 
+/*
+ Users should be able to open the app and see the details screen.
+ Screen includes the following elements:
+ - App title
+ - Name
+ - Birthday
+ - Picture
+ - “Show birthday screen” button (disabled while name & birthday are empty)
+ */
+
 final class DetailsViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Private Properties
