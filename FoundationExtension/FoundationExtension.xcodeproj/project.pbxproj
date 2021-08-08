@@ -13,6 +13,8 @@
 		5A8BF00526BFDDDC00C42C80 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF00426BFDDDC00C42C80 /* Bundle+Extension.swift */; };
 		5A8BF00926BFDF7800C42C80 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF00826BFDF7800C42C80 /* Array+Extension.swift */; };
 		5A8BF02426BFE8EA00C42C80 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF02326BFE8EA00C42C80 /* Date+Extension.swift */; };
+		5A8BF03026C0049100C42C80 /* Funcs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF02F26C0049100C42C80 /* Funcs.swift */; };
+		5A8BF03826C007EE00C42C80 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF03726C007ED00C42C80 /* Logging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5A8BF00426BFDDDC00C42C80 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		5A8BF00826BFDF7800C42C80 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		5A8BF02326BFE8EA00C42C80 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		5A8BF02F26C0049100C42C80 /* Funcs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funcs.swift; sourceTree = "<group>"; };
+		5A8BF03726C007ED00C42C80 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		5A8BEFEA26BFD55200C42C80 /* FoundationExtension */ = {
 			isa = PBXGroup;
 			children = (
+				5A8BF02E26C0048900C42C80 /* Other */,
 				5A8BEFF526BFD57400C42C80 /* Foundation */,
 				5A8BEFF426BFD56E00C42C80 /* Protocols */,
 				5A8BEFF326BFD56800C42C80 /* BaseClasses */,
@@ -89,6 +94,15 @@
 				5A8BF02326BFE8EA00C42C80 /* Date+Extension.swift */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		5A8BF02E26C0048900C42C80 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5A8BF02F26C0049100C42C80 /* Funcs.swift */,
+				5A8BF03726C007ED00C42C80 /* Logging.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +187,8 @@
 				5A8BF02426BFE8EA00C42C80 /* Date+Extension.swift in Sources */,
 				5A8BEFFF26BFD61000C42C80 /* String+Extension.swift in Sources */,
 				5A8BF00526BFDDDC00C42C80 /* Bundle+Extension.swift in Sources */,
+				5A8BF03826C007EE00C42C80 /* Logging.swift in Sources */,
+				5A8BF03026C0049100C42C80 /* Funcs.swift in Sources */,
 				5A8BEFF726BFD58700C42C80 /* String+Localization.swift in Sources */,
 				5A8BF00926BFDF7800C42C80 /* Array+Extension.swift in Sources */,
 			);

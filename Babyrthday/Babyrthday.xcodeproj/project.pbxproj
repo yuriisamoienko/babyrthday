@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,11 @@
 		5A8BEFFA26BFD5D500C42C80 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEFF926BFD5D400C42C80 /* String+Localization.swift */; };
 		5A8BEFFC26BFD5E100C42C80 /* FoundationExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BEFFB26BFD5E100C42C80 /* FoundationExtension.framework */; };
 		5A8BEFFD26BFD5E100C42C80 /* FoundationExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BEFFB26BFD5E100C42C80 /* FoundationExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5A8BF02926BFF17E00C42C80 /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF02826BFF17E00C42C80 /* DetailsPresenter.swift */; };
+		5A8BF02D26BFFFA800C42C80 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF02C26BFFFA800C42C80 /* UIImage+Extension.swift */; };
+		5A8BF03326C005A300C42C80 /* PhotoChooseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF03226C005A300C42C80 /* PhotoChooseService.swift */; };
+		5A8BF03626C0062E00C42C80 /* AssetsPickerViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 5A8BF03526C0062E00C42C80 /* AssetsPickerViewController */; };
+		5A8BF03A26C008B100C42C80 /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF03926C008B100C42C80 /* PHAsset+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +56,10 @@
 		5A8BEFDC26BFD50A00C42C80 /* Localization_en.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localization_en.strings; sourceTree = "<group>"; };
 		5A8BEFF926BFD5D400C42C80 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		5A8BEFFB26BFD5E100C42C80 /* FoundationExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FoundationExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A8BF02826BFF17E00C42C80 /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		5A8BF02C26BFFFA800C42C80 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		5A8BF03226C005A300C42C80 /* PhotoChooseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoChooseService.swift; sourceTree = "<group>"; };
+		5A8BF03926C008B100C42C80 /* PHAsset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8BF03626C0062E00C42C80 /* AssetsPickerViewController in Frameworks */,
 				5A8BEFCA26BFCE4800C42C80 /* UIKitExtension.framework in Frameworks */,
 				5A8BEFFC26BFD5E100C42C80 /* FoundationExtension.framework in Frameworks */,
 			);
@@ -86,14 +96,16 @@
 		5A8BEF9926BFCBF700C42C80 /* Babyrthday */ = {
 			isa = PBXGroup;
 			children = (
-				5A8BEFDA26BFD41C00C42C80 /* ViewControllers */,
-				5A8BEFD926BFD40F00C42C80 /* Storyboards */,
-				5A8BEFD826BFD40900C42C80 /* Xibs */,
-				5A8BEFD326BFD36D00C42C80 /* Resources */,
-				5A8BEFCD26BFD2EB00C42C80 /* Extensions */,
 				5A8BEF9A26BFCBF700C42C80 /* AppDelegate.swift */,
-				5A8BEFA526BFCBF800C42C80 /* LaunchScreen.storyboard */,
+				5A8BEFCD26BFD2EB00C42C80 /* Extensions */,
 				5A8BEFA826BFCBF800C42C80 /* Info.plist */,
+				5A8BEFA526BFCBF800C42C80 /* LaunchScreen.storyboard */,
+				5A8BF02726BFF16B00C42C80 /* Presenter */,
+				5A8BEFD326BFD36D00C42C80 /* Resources */,
+				5A8BF03126C0057800C42C80 /* Services */,
+				5A8BEFD926BFD40F00C42C80 /* Storyboards */,
+				5A8BEFDA26BFD41C00C42C80 /* ViewControllers */,
+				5A8BEFD826BFD40900C42C80 /* Xibs */,
 			);
 			path = Babyrthday;
 			sourceTree = "<group>";
@@ -120,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				5A8BEFCF26BFD30F00C42C80 /* UIColor+Extensions.swift */,
+				5A8BF02C26BFFFA800C42C80 /* UIImage+Extension.swift */,
+				5A8BF03926C008B100C42C80 /* PHAsset+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -173,6 +187,22 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		5A8BF02726BFF16B00C42C80 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5A8BF02826BFF17E00C42C80 /* DetailsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		5A8BF03126C0057800C42C80 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5A8BF03226C005A300C42C80 /* PhotoChooseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,6 +220,9 @@
 			dependencies = (
 			);
 			name = Babyrthday;
+			packageProductDependencies = (
+				5A8BF03526C0062E00C42C80 /* AssetsPickerViewController */,
+			);
 			productName = Babyrthday;
 			productReference = 5A8BEF9726BFCBF700C42C80 /* Babyrthday.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +250,9 @@
 				Base,
 			);
 			mainGroup = 5A8BEF8E26BFCBF700C42C80;
+			packageReferences = (
+				5A8BF03426C0062E00C42C80 /* XCRemoteSwiftPackageReference "AssetsPickerViewController" */,
+			);
 			productRefGroup = 5A8BEF9826BFCBF700C42C80 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -246,10 +282,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A8BEF9F26BFCBF700C42C80 /* DetailsViewController.swift in Sources */,
+				5A8BF02D26BFFFA800C42C80 /* UIImage+Extension.swift in Sources */,
 				5A8BEFD726BFD3C500C42C80 /* Colors.swift in Sources */,
+				5A8BF03A26C008B100C42C80 /* PHAsset+Extension.swift in Sources */,
 				5A8BEFD026BFD30F00C42C80 /* UIColor+Extensions.swift in Sources */,
 				5A8BEF9B26BFCBF700C42C80 /* AppDelegate.swift in Sources */,
 				5A8BEFFA26BFD5D500C42C80 /* String+Localization.swift in Sources */,
+				5A8BF02926BFF17E00C42C80 /* DetailsPresenter.swift in Sources */,
+				5A8BF03326C005A300C42C80 /* PhotoChooseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +491,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A8BF03426C0062E00C42C80 /* XCRemoteSwiftPackageReference "AssetsPickerViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DragonCherry/AssetsPickerViewController";
+			requirement = {
+				kind = exactVersion;
+				version = 2.9.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A8BF03526C0062E00C42C80 /* AssetsPickerViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A8BF03426C0062E00C42C80 /* XCRemoteSwiftPackageReference "AssetsPickerViewController" */;
+			productName = AssetsPickerViewController;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A8BEF8F26BFCBF700C42C80 /* Project object */;
 }

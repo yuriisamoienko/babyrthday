@@ -15,6 +15,14 @@ public extension UIView {
         endEditing(true)
     }
     
+    func disableUserInteraction() {
+        isUserInteractionEnabled = false
+    }
+
+    func enableUserInteraction() {
+        isUserInteractionEnabled = true
+    }
+    
     // MARK: - IBInspectable
     
     @IBInspectable var cornerRadius: CGFloat {

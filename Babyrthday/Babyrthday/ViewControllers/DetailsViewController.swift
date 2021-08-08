@@ -19,7 +19,7 @@ import UIKitExtension
  - “Show birthday screen” button (disabled while name & birthday are empty)
  */
 
-final class DetailsViewController: UIViewController, UITextFieldDelegate {
+final class DetailsViewController: UIViewController, UITextFieldDelegate, DetailsPresenterViewProtocol {
     
     // MARK: Private Properties
     
@@ -27,6 +27,9 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
+    
+    private lazy var presenter: DetailsPresenterProtocol = DetailsPresenter(view: self)
+    private var saveNameDelayedWork: DispatchWorkItem?
     
     // Flags
     private var isBirthdayDateSet = false {
@@ -42,8 +45,72 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate {
         
         configureUI()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.updateView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    // MARK: UITextFieldDelegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.nameTextField {
+            let currentText = textField.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else {
+                return false
+            }
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+            self.updateNextButtonEnabled(with: updatedText)
+            
+            // call save name if user didn't tap anything for some time, to save if user wil close app after without tap Done button
+            self.saveNameDelayedWork?.cancel()
+            self.saveNameDelayedWork = debounceTask(delay: 1, closure: { [weak self] in
+                self?.saveEnteredName()
+            })
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.nameTextField {
+           self.view.hideKeyboard()
+           return false
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == self.nameTextField {
+            saveEnteredName()
+        }
+    }
+    
+    // MARK: DetailsPresenterViewProtocol
+    
+    func setPersonName(_ value: String) {
+        nameTextField.text = value
+        updateNextButtonEnabled()
+    }
+    
+    func setBirthdayDate(_ value: Date) {
+        birthdayDatePicker.date = value
+        isBirthdayDateSet = true
+        updateNextButtonEnabled()
+    }
+    
+    func setPhoto(_ value: UIImage?) {
+        photoImageView.image = value ?? .assets.photoPlaceholder
+    }
+    
     // MARK: Private Functions
+    
+    private func saveEnteredName() {
+        presenter.savePersonName(nameTextField.text ?? "")
+    }
     
     private func configureUI() {
         self.title = Bundle.main.displayName ?? Bundle.main.name
@@ -51,6 +118,7 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate {
         if let textField = self.nameTextField {
             textField.placeholder = .localize.enterBabyName
             textField.delegate = self
+            textField.borderColor = .appThemeBackground
         }
         
         if let picker = self.birthdayDatePicker {
@@ -59,9 +127,26 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate {
             let currentDate = Date()
             picker.date = currentDate
             picker.maximumDate = currentDate
-            picker.onValueChandedCallback = { [weak self] _ in
-                self?.isBirthdayDateSet = true
+            picker.onValueChandedCallback = { [weak self] picker in
+                guard let self = self else { return }
+                self.isBirthdayDateSet = true
+                self.presenter.saveBirthdayDate(picker.date)
             }
+        }
+        
+        if let imageView = self.photoImageView {
+            let gestureRecognizer = IBTapGestureRecognizer() { [weak self] _ in
+                guard let self = self else { return }
+                
+                PhotoChooseService(in: self)
+                    .setMaximumSelectionCount(1)
+                    .pickImage { [weak self] images in
+                        guard let image = images.first else { return }
+                        self?.presenter.setPhoto(image)
+                    }
+            }
+            imageView.addGestureRecognizer(gestureRecognizer)
+            imageView.enableUserInteraction()
         }
         
         if let btn = self.nextButton {
@@ -91,25 +176,4 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate {
         btn.backgroundColor = enabled ? .appThemeBackground : .appThemeBackground.withAlphaComponent(0.3)
     }
     
-    // MARK: UITextFieldDelegate
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == self.nameTextField {
-            let currentText = textField.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else {
-                return false
-            }
-            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-            self.updateNextButtonEnabled(with: updatedText)
-        }
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == self.nameTextField {
-           self.view.hideKeyboard()
-           return false
-        }
-        return true
-    }
 }

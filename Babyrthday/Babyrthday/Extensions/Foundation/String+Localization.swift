@@ -25,7 +25,21 @@ extension String.Localizations {
     var showBirthdayScreen: String {
         "k_show_birthday_screen".localized
     }
-    
+    var cameraNotFound: String {
+        "k_camera_not_found".localized
+    }
+    var cancel: String {
+        "k_cancel".localized
+    }
+    var gallery: String {
+        "k_gallery".localized
+    }
+    var camera: String {
+        "k_camera".localized
+    }
+    var chooseImage: String {
+        "k_choose_image".localized
+    }
 
 }
 

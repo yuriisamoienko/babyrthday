@@ -8,3 +8,9 @@
 
 "k_enter_baby_name" = "Enter your baby name";
 "k_show_birthday_screen" = "show birthday screen";
+"k_camera_not_found" = "you don't have camera";
+"k_cancel" = "cancel";
+"k_gallery" = "gallery";
+"k_camera" = "camera";
+"k_choose_image" = "choose image";
+"k_error" = "error";

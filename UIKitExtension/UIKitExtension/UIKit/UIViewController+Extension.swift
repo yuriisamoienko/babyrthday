@@ -25,4 +25,14 @@ public extension UIViewController {
         let result = board.instantiateViewController(withIdentifier: identifier) as! Self
         return result
     }
+    
+    func present(viewController: UIViewController?, animated: Bool = true, completion: (() -> Void)? = nil) {
+        guard let viewController = viewController else { return }
+        if self.presentedViewController == viewController {
+            return
+        }
+        DispatchQueue.main.async { [self, animated, completion] in
+            self.present(viewController, animated: animated, completion: completion)
+        }
+    }
 }

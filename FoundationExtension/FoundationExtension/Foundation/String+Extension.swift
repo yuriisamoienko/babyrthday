@@ -23,5 +23,9 @@ public extension String {
         let result = (self as NSString).substring(to: index)
         return result
     }
+    
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
 
 }
