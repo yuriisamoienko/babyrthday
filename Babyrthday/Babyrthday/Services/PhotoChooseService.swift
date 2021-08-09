@@ -9,16 +9,15 @@ import Foundation
 import UIKit
 import Photos
 import FoundationExtension
-import AssetsPickerViewController // used https://github.com/DragonCherry/AssetsPickerViewController becouse this will not be effective doing yourself
 
-final class PhotoChooseService: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AssetsPickerViewControllerDelegate {
+final class PhotoChooseService: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: Private properties
     
     private lazy var cameraPicker = UIImagePickerController()
-    private lazy var picker: AssetsPickerViewController = {
-        let picker = AssetsPickerViewController()
-        picker.pickerDelegate = self
+    private lazy var picker: UIImagePickerController = {
+        let picker = UIImagePickerController()
+        picker.delegate = self
         return picker
     }()
     private lazy var alert = createAlert()
@@ -34,7 +33,7 @@ final class PhotoChooseService: NSObject, UIImagePickerControllerDelegate, UINav
     
     // MARK: Public functions
 
-    public func pickImage(callback: @escaping (([UIImage]) -> ())) {
+    func pickImage(callback: @escaping (([UIImage]) -> ())) {
         pickImageCallback = callback
 
         alert.popoverPresentationController?.sourceView = self.viewController.view
@@ -42,62 +41,19 @@ final class PhotoChooseService: NSObject, UIImagePickerControllerDelegate, UINav
         viewController.present(alert, animated: true, completion: nil)
     }
     
-    @discardableResult
-    public func setMaximumSelectionCount(_ value: Int) -> Self {
-        picker.pickerConfig.assetsMaximumSelectionCount = value
-        return self
-    }
-    
     // MARK: UIImagePickerControllerDelegate
     
-    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
     
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[.originalImage] as? UIImage else {
             fatalMistake("Expected a dictionary containing an image, but was provided the following: \(info)")
             return
         }
         pickImageCallback?([image])
-    }
-
-    // MARK: AssetsPickerViewControllerDelegate
-    
-    func assetsPickerCannotAccessPhotoLibrary(controller: AssetsPickerViewController) {
-        
-    }
-    
-    func assetsPickerDidCancel(controller: AssetsPickerViewController) {
-        
-    }
-    
-    func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
-        // do your job with selected assets
-        var images = [UIImage]()
-        for item in assets {
-            if let image = item.originalImage {
-                images.append(image)
-            }
-        }
-        pickImageCallback?(images)
-    }
-    
-    func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func assetsPicker(controller: AssetsPickerViewController, didSelect asset: PHAsset, at indexPath: IndexPath) {
-        
-    }
-    
-    func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func assetsPicker(controller: AssetsPickerViewController, didDeselect asset: PHAsset, at indexPath: IndexPath) {
-        
     }
     
     // MARK: Private functions

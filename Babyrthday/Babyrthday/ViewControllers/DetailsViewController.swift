@@ -139,9 +139,7 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate, Detail
             let gestureRecognizer = IBTapGestureRecognizer() { [weak self] _ in
                 guard let self = self else { return }
                 
-                PhotoChooseService(in: self)
-                    .setMaximumSelectionCount(1)
-                    .pickImage { [weak self] images in
+                PhotoChooseService(in: self).pickImage { [weak self] images in
                         guard let self = self,
                               let image = images.first
                         else {

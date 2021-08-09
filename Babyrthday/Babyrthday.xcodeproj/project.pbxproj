@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,7 +23,6 @@
 		5A8BF02926BFF17E00C42C80 /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF02826BFF17E00C42C80 /* DetailsPresenter.swift */; };
 		5A8BF02D26BFFFA800C42C80 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF02C26BFFFA800C42C80 /* UIImage+Extension.swift */; };
 		5A8BF03326C005A300C42C80 /* PhotoChooseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF03226C005A300C42C80 /* PhotoChooseService.swift */; };
-		5A8BF03626C0062E00C42C80 /* AssetsPickerViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 5A8BF03526C0062E00C42C80 /* AssetsPickerViewController */; };
 		5A8BF03A26C008B100C42C80 /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF03926C008B100C42C80 /* PHAsset+Extension.swift */; };
 		5A8BF03F26C033EF00C42C80 /* BirthdayScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BF03D26C033EE00C42C80 /* BirthdayScreenViewController.swift */; };
 		5A8BF04026C033EF00C42C80 /* BirthdayScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BF03E26C033EE00C42C80 /* BirthdayScreenViewController.xib */; };
@@ -71,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A8BF03626C0062E00C42C80 /* AssetsPickerViewController in Frameworks */,
 				5A8BEFCA26BFCE4800C42C80 /* UIKitExtension.framework in Frameworks */,
 				5A8BEFFC26BFD5E100C42C80 /* FoundationExtension.framework in Frameworks */,
 			);
@@ -227,7 +225,6 @@
 			);
 			name = Babyrthday;
 			packageProductDependencies = (
-				5A8BF03526C0062E00C42C80 /* AssetsPickerViewController */,
 			);
 			productName = Babyrthday;
 			productReference = 5A8BEF9726BFCBF700C42C80 /* Babyrthday.app */;
@@ -257,7 +254,6 @@
 			);
 			mainGroup = 5A8BEF8E26BFCBF700C42C80;
 			packageReferences = (
-				5A8BF03426C0062E00C42C80 /* XCRemoteSwiftPackageReference "AssetsPickerViewController" */,
 			);
 			productRefGroup = 5A8BEF9826BFCBF700C42C80 /* Products */;
 			projectDirPath = "";
@@ -499,25 +495,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5A8BF03426C0062E00C42C80 /* XCRemoteSwiftPackageReference "AssetsPickerViewController" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/DragonCherry/AssetsPickerViewController";
-			requirement = {
-				kind = exactVersion;
-				version = 2.9.7;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5A8BF03526C0062E00C42C80 /* AssetsPickerViewController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5A8BF03426C0062E00C42C80 /* XCRemoteSwiftPackageReference "AssetsPickerViewController" */;
-			productName = AssetsPickerViewController;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A8BEF8F26BFCBF700C42C80 /* Project object */;
 }
