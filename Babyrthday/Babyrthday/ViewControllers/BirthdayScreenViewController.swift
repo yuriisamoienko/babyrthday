@@ -18,14 +18,20 @@ import UIKitExtension
 final class BirthdayScreenViewController: UIViewController {
     
     // MARK: Private Properties
+    
+    // IB
     @IBOutlet private weak var backgroundImageView: UIImageView!
     @IBOutlet private weak var circlePlaceholderImageView: UIImageView!
     @IBOutlet private weak var ageNumberFirstView: UIImageView!
     @IBOutlet private weak var ageNumberSecondView: UIImageView!
     @IBOutlet private weak var titleTopLabel: UILabel!
     @IBOutlet private weak var titleBottomLabel: UILabel!
-    @IBOutlet weak var cameraImageView: UIImageView!
-    @IBOutlet weak var circlePlaceholderContainerView: UIView!
+    @IBOutlet private weak var cameraImageView: UIImageView!
+    @IBOutlet private weak var circlePlaceholderContainerView: UIView!
+    @IBOutlet private weak var circlePlaceholderView: UIView!
+    
+    // Flags
+    private var didAppearOnce = false
     
     // MARK: Overriden functions
     
@@ -39,15 +45,25 @@ final class BirthdayScreenViewController: UIViewController {
         
         configureBackButton()
         configureNavigationBar()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        didAppearOnce = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         restoreNavigationBarAppearance()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if didAppearOnce == false {
+            circlePlaceholderView.roundedCorners = true // do it here to fix jumping of the rounded border
+        }
     }
     
     // MARK: Private Functions
@@ -77,6 +93,15 @@ final class BirthdayScreenViewController: UIViewController {
     
     private func configureLayout() {
         ageNumberSecondView.hide()
+        
+        if true,
+           let imageView = cameraImageView,
+           let container = imageView.superview
+        {
+            let angle: CGFloat = .pi/4 // 45 degrees
+            container.transform = .init(rotationAngle: angle)
+            imageView.transform = .init(rotationAngle: -angle)
+        }
     }
     
     // Targets
