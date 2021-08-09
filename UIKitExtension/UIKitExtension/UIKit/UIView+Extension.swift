@@ -9,6 +9,17 @@ import UIKit
 
 public extension UIView {
     
+    // MARK: Public Properties
+    
+    var frameWidth: CGFloat {
+        get {
+            return frame.size.width
+        }
+        set {
+            frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: newValue, height: frame.size.height)
+        }
+    }
+    
     // MARK: Public Functions
     
     func hideKeyboard() {
@@ -31,7 +42,7 @@ public extension UIView {
         isHidden = false
     }
     
-    // MARK: - IBInspectable
+    // MARK: IBInspectable
     
     @IBInspectable var cornerRadius: CGFloat {
         set {
@@ -42,6 +53,19 @@ public extension UIView {
         }
         get {
             return layer.cornerRadius
+        }
+    }
+    
+    @IBInspectable var roundedCorners: Bool {
+        set {
+            var value: CGFloat = 0
+            if newValue == true {
+                value = frameWidth/2
+            }
+            cornerRadius = value
+        }
+        get {
+            return false
         }
     }
     

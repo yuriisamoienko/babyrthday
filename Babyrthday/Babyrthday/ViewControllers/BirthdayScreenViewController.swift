@@ -24,6 +24,8 @@ final class BirthdayScreenViewController: UIViewController {
     @IBOutlet private weak var ageNumberSecondView: UIImageView!
     @IBOutlet private weak var titleTopLabel: UILabel!
     @IBOutlet private weak var titleBottomLabel: UILabel!
+    @IBOutlet weak var cameraImageView: UIImageView!
+    @IBOutlet weak var circlePlaceholderContainerView: UIView!
     
     // MARK: Overriden functions
     
