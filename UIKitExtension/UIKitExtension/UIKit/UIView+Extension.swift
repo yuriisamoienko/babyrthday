@@ -23,6 +23,14 @@ public extension UIView {
         isUserInteractionEnabled = true
     }
     
+    func hide()  {
+        isHidden = true
+    }
+
+    func showMe() {
+        isHidden = false
+    }
+    
     // MARK: - IBInspectable
     
     @IBInspectable var cornerRadius: CGFloat {
