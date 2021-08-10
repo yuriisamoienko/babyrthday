@@ -43,7 +43,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="9yq-73-iKL" userLabel="birthdayDatePicker" customClass="IBDatePicker" customModule="UIKitExtension">
-                                                <rect key="frame" x="18" y="50" width="320" height="186"/>
+                                                <rect key="frame" x="17.5" y="50" width="320" height="185.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="q5u-PC-Dtt"/>
@@ -78,6 +78,9 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onNextButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j3n-4D-7hj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

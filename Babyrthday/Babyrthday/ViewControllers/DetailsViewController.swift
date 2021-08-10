@@ -23,10 +23,10 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate, Detail
     
     // MARK: Private Properties
     
-    @IBOutlet weak var birthdayDatePicker: IBDatePicker!
-    @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet private weak var birthdayDatePicker: IBDatePicker!
+    @IBOutlet private weak var photoImageView: UIImageView!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var nextButton: UIButton!
     
     private lazy var presenter: DetailsPresenterProtocol = DetailsPresenter(view: self)
     private var saveNameDelayedWork: DispatchWorkItem?
@@ -53,7 +53,6 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate, Detail
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showBirthdayScreen() // for development
     }
     
     // MARK: UITextFieldDelegate
@@ -185,4 +184,9 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate, Detail
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    // Targets
+    
+    @IBAction func onNextButtonTapped(_ sender: Any) {
+        showBirthdayScreen()
+    }
 }

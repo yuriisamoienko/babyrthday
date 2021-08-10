@@ -15,7 +15,7 @@ import UIKitExtension
  Pushing the close button (top left corner) will return to the previous screen.
  */
 
-final class BirthdayScreenViewController: UIViewController {
+final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewProtocol {
     
     // MARK: Private Properties
     
@@ -29,9 +29,13 @@ final class BirthdayScreenViewController: UIViewController {
     @IBOutlet private weak var cameraImageView: UIImageView!
     @IBOutlet private weak var circlePlaceholderContainerView: UIView!
     @IBOutlet private weak var circlePlaceholderView: UIView!
+    @IBOutlet private weak var shareNewsButton: UIButton!
+    
+    private lazy var presenter: BirthdayScreenPresenterProtocol = BirthdayScreenPresenter(view: self)
     
     // Flags
     private var didAppearOnce = false
+    private let colorStyle: Int = .random(in: 0...2)
     
     // MARK: Overriden functions
     
@@ -45,7 +49,7 @@ final class BirthdayScreenViewController: UIViewController {
         
         configureBackButton()
         configureNavigationBar()
-        
+        presenter.updateView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,7 +70,65 @@ final class BirthdayScreenViewController: UIViewController {
         }
     }
     
+    // MARK: BirthdayScreenViewProtocol:
+    
+    func setName(_ value: String) {
+        titleTopLabel.text = .localize.todaySmnIs(value).uppercased() //"today \(value) is".uppercased()
+    }
+    
+    func setAgeMonths(_ value: Int) {
+        let number = acceptableAgeValue(from: value)
+        titleBottomLabel.text = .localize.someMonthOld(number).uppercased()
+        setAgeNumber(value)
+    }
+    
+    func setAgeYears(_ value: Int) {
+        let number = acceptableAgeValue(from: value)
+        titleBottomLabel.text = .localize.someYearOld(number).uppercased()
+        setAgeNumber(value)
+    }
+    
+    func setPhoto(_ value: UIImage?) {
+        circlePlaceholderImageView.image = value ?? getStyledCirclePlaceholder()
+    }
+    
     // MARK: Private Functions
+    
+    private func getStyledCirclePlaceholder() -> UIImage? {
+        let result: UIImage?
+        switch colorStyle {
+        case 0:
+            result = .assets.defaultPlaceHolderBlue
+        case 1:
+            result = .assets.defaultPlaceHolderGreen
+        case 2:
+            result = .assets.defaultPlaceHolderYellow
+        default:
+            result = nil
+        }
+        return result
+    }
+    
+    private func acceptableAgeValue(from value: Int) -> Int {
+        let number: Int = max(0, min(value, 99)) // keep between 0 and 99
+        return number
+    }
+    
+    private func setAgeNumber(_ value: Int) {
+        let number = acceptableAgeValue(from: value)
+        
+        ageNumberSecondView.showMe()
+        if number < 10 {
+            ageNumberFirstView.hide()
+            ageNumberSecondView.image = .assets.number(number)
+        } else {
+            ageNumberFirstView.showMe()
+            let firstNumber = Int(Double(number)/10)
+            let secondNumber = Int(Double(number).truncatingRemainder(dividingBy: 10))
+            ageNumberFirstView.image = .assets.number(firstNumber)
+            ageNumberSecondView.image = .assets.number(secondNumber)
+        }
+    }
     
     private func configureBackButton() {
         // configure custom back button
@@ -94,14 +156,43 @@ final class BirthdayScreenViewController: UIViewController {
     private func configureLayout() {
         ageNumberSecondView.hide()
         
-        if true,
-           let imageView = cameraImageView,
+        backgroundImageView.image = {
+            switch self.colorStyle {
+            case 0:
+                return .assets.iOsBgPelican
+            case 1:
+                return .assets.iOsBgFox
+            case 2:
+                return .assets.iOsBgElephant
+            default:
+                return nil
+            }
+        }()
+        
+        if let imageView = cameraImageView,
            let container = imageView.superview
         {
             let angle: CGFloat = .pi/4 // 45 degrees
             container.transform = .init(rotationAngle: angle)
             imageView.transform = .init(rotationAngle: -angle)
+            
+            cameraImageView.image = {
+                switch self.colorStyle {
+                case 0:
+                    return .assets.cameraIconBlue
+                case 1:
+                    return .assets.cameraIconGreen
+                case 2:
+                    return .assets.cameraIconYellow
+                default:
+                    return nil
+                }
+            }()
         }
+        
+        circlePlaceholderImageView.image = getStyledCirclePlaceholder()
+        
+        shareNewsButton.setTitle(.localize.shareTheNews.capitalizingFirstLetter(), for: .normal)
     }
     
     // Targets

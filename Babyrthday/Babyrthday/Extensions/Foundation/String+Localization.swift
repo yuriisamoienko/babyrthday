@@ -40,6 +40,23 @@ extension String.Localizations {
     var chooseImage: String {
         "k_choose_image".localized
     }
+    var shareTheNews: String {
+        "k_share_the_news".localized
+    }
 
+    func todaySmnIs(_ smn: String) -> String {
+        let format = "k_today_smn_is".localized
+        return String(format: format, smn)
+    }
+    
+    func someMonthOld(_ number: Int) -> String {
+        let format = "k_some_month_old".localized
+        return String(format: format, number)
+    }
+    
+    func someYearOld(_ number: Int) -> String {
+        let format = "k_some_year_old".localized
+        return String(format: format, number)
+    }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1E870926C314250056A830 /* BirthdayScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E870826C314250056A830 /* BirthdayScreenPresenter.swift */; };
 		5A8BEF9B26BFCBF700C42C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEF9A26BFCBF700C42C80 /* AppDelegate.swift */; };
 		5A8BEF9F26BFCBF700C42C80 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEF9E26BFCBF700C42C80 /* DetailsViewController.swift */; };
 		5A8BEFA226BFCBF700C42C80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BEFA026BFCBF700C42C80 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A1E870826C314250056A830 /* BirthdayScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayScreenPresenter.swift; sourceTree = "<group>"; };
 		5A8BEF9726BFCBF700C42C80 /* Babyrthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babyrthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8BEF9A26BFCBF700C42C80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A8BEF9E26BFCBF700C42C80 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				5A8BF02826BFF17E00C42C80 /* DetailsPresenter.swift */,
+				5A1E870826C314250056A830 /* BirthdayScreenPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				5A8BEFD026BFD30F00C42C80 /* UIColor+Extensions.swift in Sources */,
 				5A8BF03F26C033EF00C42C80 /* BirthdayScreenViewController.swift in Sources */,
 				5A8BEF9B26BFCBF700C42C80 /* AppDelegate.swift in Sources */,
+				5A1E870926C314250056A830 /* BirthdayScreenPresenter.swift in Sources */,
 				5A8BEFFA26BFD5D500C42C80 /* String+Localization.swift in Sources */,
 				5A8BF02926BFF17E00C42C80 /* DetailsPresenter.swift in Sources */,
 				5A8BF03326C005A300C42C80 /* PhotoChooseService.swift in Sources */,

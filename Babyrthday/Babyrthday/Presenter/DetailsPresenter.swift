@@ -27,12 +27,6 @@ protocol DetailsPresenterViewProtocol: AnyObject {
 }
 
 final class DetailsPresenter: NSObject, DetailsPresenterProtocol {
-    
-    enum UserDefaultKeys: String {
-        case personName
-        case personBirthday
-        case personPhoto
-    }
 
     // MARK: Private Properties
     
@@ -89,4 +83,11 @@ final class DetailsPresenter: NSObject, DetailsPresenterProtocol {
         userDefaults.setValue(value, forKey: key.rawValue)
         userDefaults.synchronize()
     }
+}
+
+
+enum UserDefaultKeys: String {
+    case personName
+    case personBirthday
+    case personPhoto
 }
