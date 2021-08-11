@@ -176,7 +176,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
             container.transform = .init(rotationAngle: angle)
             imageView.transform = .init(rotationAngle: -angle)
             
-            cameraImageView.image = {
+            imageView.image = {
                 switch self.colorStyle {
                 case 0:
                     return .assets.cameraIconBlue
@@ -188,6 +188,22 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
                     return nil
                 }
             }()
+            
+            let gestureRecognizer = IBTapGestureRecognizer() { [weak self] _ in
+                guard let self = self else { return }
+                
+                PhotoChooseService(in: self).pickImage { [weak self] images in
+                    guard let self = self,
+                          let image = images.first
+                    else {
+                        return
+                    }
+                    self.presenter.changePhoto(image)
+                }
+            }
+            imageView.addGestureRecognizer(gestureRecognizer)
+            imageView.enableUserInteraction()
+            container.enableUserInteraction()
         }
         
         circlePlaceholderImageView.image = getStyledCirclePlaceholder()

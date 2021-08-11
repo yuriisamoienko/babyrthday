@@ -12,7 +12,7 @@ import FoundationExtension
 
 protocol BirthdayScreenPresenterProtocol {
     func updateView()
-    
+    func changePhoto(_ value: UIImage?)
 }
 
 protocol BirthdayScreenViewProtocol: AnyObject {
@@ -59,6 +59,15 @@ final class BirthdayScreenPresenter: NSObject, BirthdayScreenPresenterProtocol {
         {
             view.setPhoto(photo)
         }
+    }
+    
+    func changePhoto(_ value: UIImage?) {
+        view.setPhoto(value)
+    
+        let imageData: Data? = value?.jpegData(compressionQuality: 1.0)
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue(imageData, forKey: UserDefaultKeys.personPhoto.rawValue)
+        userDefaults.synchronize()
     }
 
 }
