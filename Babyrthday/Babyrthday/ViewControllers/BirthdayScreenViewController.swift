@@ -13,6 +13,9 @@ import UIKitExtension
  Birthdays are shown by months until 1 year and then in years. The correct age should be displayed according to the baby's birthday.
  If the name is too long for one line the title will occupy two lines (see screen design).
  Pushing the close button (top left corner) will return to the previous screen.
+ 
+ Note:
+ Because of the fixed padding from bottom (88pt + button + ...), the circle placeholder (blue circle with baby smile) moves down and down as a phone screen gets bigger, for example on iPhone 12 Pro Max. Again, this is described in the task, but the result is ugly.
  */
 
 final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewProtocol, UIGestureRecognizerDelegate {
@@ -30,6 +33,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
     @IBOutlet private weak var circlePlaceholderContainerView: UIView!
     @IBOutlet private weak var circlePlaceholderView: UIView!
     @IBOutlet private weak var shareNewsButton: UIButton!
+    @IBOutlet private weak var contentStackViewTopConstraint: NSLayoutConstraint!
     
     private lazy var presenter: BirthdayScreenPresenterProtocol = PresenterFactory.shared.createBirthdayScreenPresenter(in: self)
     
@@ -43,6 +47,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
         super.viewDidLoad()
         configureLayout()
         fixNativeSwipeToGoBack()
+        contentStackViewTopConstraint.constant = UINavigationBar.statusBarHeight
     }
     
     override func viewWillAppear(_ animated: Bool) {

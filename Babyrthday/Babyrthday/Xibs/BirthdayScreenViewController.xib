@@ -18,6 +18,7 @@
                 <outlet property="circlePlaceholderContainerView" destination="L1J-0U-Enb" id="HFN-Zk-PZZ"/>
                 <outlet property="circlePlaceholderImageView" destination="b1F-G2-OLE" id="WZ7-VZ-A9R"/>
                 <outlet property="circlePlaceholderView" destination="9o5-d9-UWR" id="uBh-DE-NKZ"/>
+                <outlet property="contentStackViewTopConstraint" destination="Ii5-gf-Iul" id="9iO-jV-ALF"/>
                 <outlet property="shareNewsButton" destination="X6g-XQ-LxK" id="b84-tB-5Za"/>
                 <outlet property="titleBottomLabel" destination="Aug-fX-j7w" id="rQU-IR-9vR"/>
                 <outlet property="titleTopLabel" destination="0fr-A0-jZ0" id="zNX-zp-WA9"/>

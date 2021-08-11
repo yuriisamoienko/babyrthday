@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1E872626C4417D0056A830 /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E872526C4417C0056A830 /* UINavigationBar+Extension.swift */; };
 		5A8BEFBD26BFCD8B00C42C80 /* UIKitExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A8BEFBB26BFCD8B00C42C80 /* UIKitExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A8BEFC726BFCDEB00C42C80 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEFC626BFCDEB00C42C80 /* UIViewController+Extension.swift */; };
 		5A8BEFD226BFD33800C42C80 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEFD126BFD33800C42C80 /* UIColor+Extension.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A1E872526C4417C0056A830 /* UINavigationBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extension.swift"; sourceTree = "<group>"; };
 		5A8BEFB826BFCD8B00C42C80 /* UIKitExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8BEFBB26BFCD8B00C42C80 /* UIKitExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIKitExtension.h; sourceTree = "<group>"; };
 		5A8BEFBC26BFCD8B00C42C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				5A8BF00226BFDC5300C42C80 /* UIView+Extension.swift */,
 				5A8BF03B26C0090700C42C80 /* UIViewController+Alert.swift */,
 				5A8BEFC626BFCDEB00C42C80 /* UIViewController+Extension.swift */,
+				5A1E872526C4417C0056A830 /* UINavigationBar+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			files = (
 				5A8BF00126BFDBAF00C42C80 /* UIEdgeInsets+Extension.swift in Sources */,
 				5A8BEFC726BFCDEB00C42C80 /* UIViewController+Extension.swift in Sources */,
+				5A1E872626C4417D0056A830 /* UINavigationBar+Extension.swift in Sources */,
 				5A8BF00B26BFE14300C42C80 /* IBTapGestureRecognizer.swift in Sources */,
 				5A8BF02B26BFF2E100C42C80 /* UIImage+Extension.swift in Sources */,
 				5A8BF00326BFDC5300C42C80 /* UIView+Extension.swift in Sources */,
