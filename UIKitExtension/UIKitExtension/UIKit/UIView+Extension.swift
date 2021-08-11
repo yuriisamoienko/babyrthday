@@ -42,6 +42,17 @@ public extension UIView {
         isHidden = false
     }
     
+    func takeSnapshot() -> UIImage? {
+        // Begin context
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        // Draw view in that context
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        // And finally, get image
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
     // MARK: IBInspectable
     
     @IBInspectable var cornerRadius: CGFloat {

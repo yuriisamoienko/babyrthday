@@ -213,7 +213,20 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
     
     // Targets
     
-    @IBAction func onShareButtonTapped(_ sender: Any) {
+    @IBAction
+    private func onShareButtonTapped(_ sender: Any) {
+        let viewsToExcludeFromSnapshot = [shareNewsButton, cameraImageView]
+        viewsToExcludeFromSnapshot.forEach { $0?.hide() } // The shared image should not include share button and camera icon
+        let snapshot = self.view.takeSnapshot()
+        
+        // resture UI
+        viewsToExcludeFromSnapshot.forEach { $0?.showMe() }
+        
+        guard let screenshot = snapshot else { return }
+        // next is UIKit code so it's not moved to presenter
+        let activityViewController = UIActivityViewController(activityItems: [screenshot], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // fixes crash on Ipad
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     
