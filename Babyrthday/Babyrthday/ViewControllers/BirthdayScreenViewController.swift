@@ -15,7 +15,7 @@ import UIKitExtension
  Pushing the close button (top left corner) will return to the previous screen.
  */
 
-final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewProtocol {
+final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewProtocol, UIGestureRecognizerDelegate {
     
     // MARK: Private Properties
     
@@ -42,6 +42,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLayout()
+        fixNativeSwipeToGoBack()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +91,14 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
     
     func setPhoto(_ value: UIImage?) {
         circlePlaceholderImageView.image = value ?? getStyledCirclePlaceholder()
+    }
+    
+    
+    // MARK: UIGestureRecognizerDelegate
+    
+    // fixes native swipe to go back
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     // MARK: Private Functions
@@ -209,6 +218,13 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
         circlePlaceholderImageView.image = getStyledCirclePlaceholder()
         
         shareNewsButton.setTitle(.localize.shareTheNews.capitalizingFirstLetter(), for: .normal)
+    }
+    
+    private func fixNativeSwipeToGoBack() {
+        if let gestureRecognizer = self.navigationController?.interactivePopGestureRecognizer {
+            gestureRecognizer.delegate = self
+            gestureRecognizer.isEnabled = true
+        }
     }
     
     // Targets

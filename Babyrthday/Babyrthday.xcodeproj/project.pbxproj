@@ -114,7 +114,6 @@
 				5A8BEFCD26BFD2EB00C42C80 /* Extensions */,
 				5A1E870F26C43CD30056A830 /* Factories */,
 				5A8BEFA826BFCBF800C42C80 /* Info.plist */,
-				5A8BEFA526BFCBF800C42C80 /* LaunchScreen.storyboard */,
 				5A8BF02726BFF16B00C42C80 /* Presenter */,
 				5A8BEFD326BFD36D00C42C80 /* Resources */,
 				5A8BF03126C0057800C42C80 /* Services */,
@@ -174,6 +173,7 @@
 		5A8BEFD926BFD40F00C42C80 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				5A8BEFA526BFCBF800C42C80 /* LaunchScreen.storyboard */,
 				5A8BEFA026BFCBF700C42C80 /* Main.storyboard */,
 			);
 			path = Storyboards;
