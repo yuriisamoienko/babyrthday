@@ -20,6 +20,25 @@ public extension UIView {
         }
     }
     
+    var frameSize: CGSize {
+        get {
+            return frame.size
+        }
+        set {
+            frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: newValue.width, height: newValue.height)
+        }
+    }
+    
+    var frameCenter: CGPoint {
+        set {
+            frame.center = newValue
+        }
+        get {
+            let result = frame.center
+            return result
+        }
+    }
+    
     // MARK: Public Functions
     
     func hideKeyboard() {

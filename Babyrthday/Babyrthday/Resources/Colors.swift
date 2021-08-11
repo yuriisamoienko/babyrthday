@@ -16,6 +16,6 @@ import UIKit
 
 extension UIColor {
     
-    static var appThemeBackground: UIColor = .red
+    static var appThemeBackground: UIColor = .systemTeal
 
 }

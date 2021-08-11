@@ -34,6 +34,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
     @IBOutlet private weak var circlePlaceholderView: UIView!
     @IBOutlet private weak var shareNewsButton: UIButton!
     @IBOutlet private weak var contentStackViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var cameraTouchView: UIView!
     
     private lazy var presenter: BirthdayScreenPresenterProtocol = PresenterFactory.shared.createBirthdayScreenPresenter(in: self)
     
@@ -55,11 +56,17 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
         
         configureBackButton()
         configureNavigationBar()
+        
         presenter.updateView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if didAppearOnce == false {
+            configureCameraTap()
+        }
+        
         didAppearOnce = true
     }
     
@@ -203,21 +210,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
                 }
             }()
             
-            let gestureRecognizer = IBTapGestureRecognizer() { [weak self] _ in
-                guard let self = self else { return }
-                
-                PhotoChooseService(in: self).pickImage { [weak self] images in
-                    guard let self = self,
-                          let image = images.first
-                    else {
-                        return
-                    }
-                    self.presenter.changePhoto(image)
-                }
-            }
-            imageView.addGestureRecognizer(gestureRecognizer)
-            imageView.enableUserInteraction()
-            container.enableUserInteraction()
+           
         }
         
         circlePlaceholderImageView.image = getStyledCirclePlaceholder()
@@ -230,6 +223,28 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
             gestureRecognizer.delegate = self
             gestureRecognizer.isEnabled = true
         }
+    }
+    
+    private func configureCameraTap() {
+        let gestureRecognizer = IBTapGestureRecognizer() { [weak self] _ in
+            guard let self = self else { return }
+            
+            PhotoChooseService(in: self).pickImage { [weak self] images in
+                guard let self = self,
+                      let image = images.first
+                else {
+                    return
+                }
+                self.presenter.changePhoto(image)
+            }
+        }
+        // let's make touch area of camera button bigger
+        let cameraTouchView = UIView()
+        cameraTouchView.addGestureRecognizer(gestureRecognizer)
+        cameraTouchView.enableUserInteraction()
+        self.view.addSubview(cameraTouchView)
+        cameraTouchView.frameSize = .init(width: 55, height: 55)
+        cameraTouchView.frameCenter = self.view.convert(cameraImageView.frame, from: cameraImageView.superview).center
     }
     
     // Targets

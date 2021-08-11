@@ -21,7 +21,7 @@
                                 <rect key="frame" x="10" y="59" width="355" height="593"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xKt-H3-Pc9">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="593"/>
+                                        <rect key="frame" x="0.0" y="45.5" width="355" height="502"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MAy-mk-kCT" userLabel="nameTextField">
                                                 <rect key="frame" x="160.5" y="0.0" width="34" height="35"/>
@@ -43,7 +43,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="9yq-73-iKL" userLabel="birthdayDatePicker" customClass="IBDatePicker" customModule="UIKitExtension">
-                                                <rect key="frame" x="17.5" y="50" width="320" height="185.5"/>
+                                                <rect key="frame" x="17.5" y="50" width="320" height="210"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="q5u-PC-Dtt"/>
@@ -61,10 +61,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </datePicker>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="hkH-Pi-0p7" userLabel="photoImageView">
-                                                <rect key="frame" x="2.5" y="250.5" width="350" height="282.5"/>
+                                                <rect key="frame" x="90" y="275" width="175" height="167"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fz-pL-9AB" userLabel="nextButton">
-                                                <rect key="frame" x="138" y="548" width="79" height="45"/>
+                                                <rect key="frame" x="138" y="457" width="79" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="VJg-Mf-gtE"/>
                                                 </constraints>
@@ -128,7 +128,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="photoPlaceholder" width="350" height="350"/>
+        <image name="photoPlaceholder" width="175" height="175"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
