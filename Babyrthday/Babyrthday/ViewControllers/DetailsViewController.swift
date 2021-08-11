@@ -28,7 +28,7 @@ final class DetailsViewController: UIViewController, UITextFieldDelegate, Detail
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var nextButton: UIButton!
     
-    private lazy var presenter: DetailsPresenterProtocol = DetailsPresenter(view: self)
+    private lazy var presenter: DetailsPresenterProtocol = PresenterFactory.shared.createDetailsPresenter(in: self)
     private var saveNameDelayedWork: DispatchWorkItem?
     
     // Flags

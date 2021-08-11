@@ -31,7 +31,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
     @IBOutlet private weak var circlePlaceholderView: UIView!
     @IBOutlet private weak var shareNewsButton: UIButton!
     
-    private lazy var presenter: BirthdayScreenPresenterProtocol = BirthdayScreenPresenter(view: self)
+    private lazy var presenter: BirthdayScreenPresenterProtocol = PresenterFactory.shared.createBirthdayScreenPresenter(in: self)
     
     // Flags
     private var didAppearOnce = false
@@ -73,7 +73,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
     // MARK: BirthdayScreenViewProtocol:
     
     func setName(_ value: String) {
-        titleTopLabel.text = .localize.todaySmnIs(value).uppercased() //"today \(value) is".uppercased()
+        titleTopLabel.text = .localize.todaySmnIs(value).uppercased()
     }
     
     func setAgeMonths(_ value: Int) {
