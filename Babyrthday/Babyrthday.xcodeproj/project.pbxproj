@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A079B1026C5B5570042B7BE /* UserProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A079B0F26C5B5570042B7BE /* UserProfileRepository.swift */; };
 		5A1E870926C314250056A830 /* BirthdayScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E870826C314250056A830 /* BirthdayScreenPresenter.swift */; };
 		5A1E871126C43CE80056A830 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E871026C43CE80056A830 /* PresenterFactory.swift */; };
 		5A8BEF9B26BFCBF700C42C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEF9A26BFCBF700C42C80 /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A079B0F26C5B5570042B7BE /* UserProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRepository.swift; sourceTree = "<group>"; };
 		5A1E870826C314250056A830 /* BirthdayScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayScreenPresenter.swift; sourceTree = "<group>"; };
 		5A1E871026C43CE80056A830 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
 		5A8BEF9726BFCBF700C42C80 /* Babyrthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babyrthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A079B0E26C5B52F0042B7BE /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				5A079B0F26C5B5570042B7BE /* UserProfileRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		5A1E870F26C43CD30056A830 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 				5A1E870F26C43CD30056A830 /* Factories */,
 				5A8BEFA826BFCBF800C42C80 /* Info.plist */,
 				5A8BF02726BFF16B00C42C80 /* Presenter */,
+				5A079B0E26C5B52F0042B7BE /* Repositories */,
 				5A8BEFD326BFD36D00C42C80 /* Resources */,
 				5A8BF03126C0057800C42C80 /* Services */,
 				5A8BEFD926BFD40F00C42C80 /* Storyboards */,
@@ -303,6 +314,7 @@
 				5A8BEFD726BFD3C500C42C80 /* Colors.swift in Sources */,
 				5A8BF03A26C008B100C42C80 /* PHAsset+Extension.swift in Sources */,
 				5A8BEFD026BFD30F00C42C80 /* UIColor+Extensions.swift in Sources */,
+				5A079B1026C5B5570042B7BE /* UserProfileRepository.swift in Sources */,
 				5A1E871126C43CE80056A830 /* PresenterFactory.swift in Sources */,
 				5A8BF03F26C033EF00C42C80 /* BirthdayScreenViewController.swift in Sources */,
 				5A8BEF9B26BFCBF700C42C80 /* AppDelegate.swift in Sources */,

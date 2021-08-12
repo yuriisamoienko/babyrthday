@@ -29,7 +29,7 @@ final class BirthdayScreenPresenter: NSObject, BirthdayScreenPresenterProtocol {
     // MARK: Private Properties
     
     private weak var view: BirthdayScreenViewProtocol!
-    private let userDefaults = UserDefaults.standard
+    private var repository: UserProfileRepositoryProtocol = UserProfileRepository.shared
     
     // MARK: Public Functions
     
@@ -41,11 +41,11 @@ final class BirthdayScreenPresenter: NSObject, BirthdayScreenPresenterProtocol {
     // MARK: DetailsPresenterProtocol
     
     func updateView() {
-        if let name = userDefaults.string(forKey: UserDefaultKeys.personName.rawValue) {
+        if let name = repository.getPersonName() {
             view.setName(name)
         }
-        if let timeStamp = userDefaults.value(forKey: UserDefaultKeys.personBirthday.rawValue) as? TimeInterval {
-            let birthday = Date(timeIntervalSince1970: timeStamp)
+ 
+        if let birthday = repository.getBirthdayDate() {
             let months = Date().months(from: birthday)
             if months < 12 {
                 view.setAgeMonths(months)
@@ -54,9 +54,7 @@ final class BirthdayScreenPresenter: NSObject, BirthdayScreenPresenterProtocol {
                 view.setAgeYears(years)
             }
         }
-        if let photoData = userDefaults.value(forKey: UserDefaultKeys.personPhoto.rawValue) as? Data,
-           let photo = UIImage(data: photoData)
-        {
+        if let photo = repository.getPhoto() {
             view.setPhoto(photo)
         }
     }
@@ -64,10 +62,7 @@ final class BirthdayScreenPresenter: NSObject, BirthdayScreenPresenterProtocol {
     func changePhoto(_ value: UIImage?) {
         view.setPhoto(value)
     
-        let imageData: Data? = value?.jpegData(compressionQuality: 1.0)
-        let userDefaults = UserDefaults.standard
-        userDefaults.setValue(imageData, forKey: UserDefaultKeys.personPhoto.rawValue)
-        userDefaults.synchronize()
+        repository.setPhoto(value)
     }
 
 }

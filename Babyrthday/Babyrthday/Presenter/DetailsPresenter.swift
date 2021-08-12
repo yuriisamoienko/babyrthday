@@ -31,7 +31,7 @@ final class DetailsPresenter: NSObject, DetailsPresenterProtocol {
     // MARK: Private Properties
     
     private weak var view: DetailsPresenterViewProtocol!
-    private let userDefaults = UserDefaults.standard
+    private var repository: UserProfileRepositoryProtocol = UserProfileRepository.shared
     
     // MARK: Public Functions
     
@@ -43,15 +43,15 @@ final class DetailsPresenter: NSObject, DetailsPresenterProtocol {
     // MARK: DetailsPresenterProtocol
     
     func updateView() {
-        if let name = userDefaults.string(forKey: UserDefaultKeys.personName.rawValue) {
+        if let name = repository.getPersonName() { //} userDefaults.string(forKey: UserDefaultKeys.personName.rawValue) {
             view.setPersonName(name)
         }
-        if let timeStamp = userDefaults.value(forKey: UserDefaultKeys.personBirthday.rawValue) as? TimeInterval {
-            let date = Date(timeIntervalSince1970: timeStamp)
+        if let date = repository.getBirthdayDate() { //userDefaults.value(forKey: UserDefaultKeys.personBirthday.rawValue) as? TimeInterval {
+//            let date = Date(timeIntervalSince1970: timeStamp)
             view.setBirthdayDate(date)
         }
-        if let photoData = userDefaults.value(forKey: UserDefaultKeys.personPhoto.rawValue) as? Data,
-           let photo = UIImage(data: photoData)
+        if let photo = repository.getPhoto() // userDefaults.value(forKey: UserDefaultKeys.personPhoto.rawValue) as? Data,
+           //let photo = UIImage(data: photoData)
         {
             view.setPhoto(photo)
         }
@@ -62,32 +62,18 @@ final class DetailsPresenter: NSObject, DetailsPresenterProtocol {
     }
     
     func savePersonName(_ value: String) {
-        setUserDefaultsValue(value, forKey: .personName)
+        repository.setPersonName(value)
     }
     
     func saveBirthdayDate(_ value: Date) {
-        setUserDefaultsValue(value.timeIntervalSince1970, forKey: .personBirthday)
+        repository.setBirthdayDate(value)
     }
     
     func savePhoto(_ value: UIImage?) {
-        guard let value = value else {
-            setUserDefaultsValue(nil, forKey: .personPhoto)
-            return
-        }
-        setUserDefaultsValue(value.jpegData(compressionQuality: 1.0), forKey: .personPhoto)
+        repository.setPhoto(value)
     }
     
     // MARK: Private Functions
     
-    func setUserDefaultsValue(_ value: Any?, forKey key: UserDefaultKeys) {
-        userDefaults.setValue(value, forKey: key.rawValue)
-        userDefaults.synchronize()
-    }
 }
 
-
-enum UserDefaultKeys: String {
-    case personName
-    case personBirthday
-    case personPhoto
-}
