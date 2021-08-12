@@ -16,5 +16,5 @@
 "k_error" = "error";
 "k_share_the_news" = "share the news";
 "k_today_smn_is" = "today %@ is";
-"k_some_month_old" = "%d month old";
-"k_some_year_old" = "%d year old";
+"k_some_month_old" = "month old";
+"k_some_year_old" = "year old";

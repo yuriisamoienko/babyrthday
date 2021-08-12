@@ -50,13 +50,11 @@ extension String.Localizations {
     }
     
     func someMonthOld(_ number: Int) -> String {
-        let format = "k_some_month_old".localized
-        return String(format: format, number)
+        "k_some_month_old".localized
     }
     
     func someYearOld(_ number: Int) -> String {
-        let format = "k_some_year_old".localized
-        return String(format: format, number)
+        "k_some_year_old".localized
     }
 }
 
