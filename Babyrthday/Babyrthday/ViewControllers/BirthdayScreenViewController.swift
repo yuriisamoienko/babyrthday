@@ -7,6 +7,7 @@
 
 import UIKit
 import UIKitExtension
+import FoundationExtension
 
 /*
  The birthday screen has 3 visual options. One should be chosen randomly every time you enter the screen.
@@ -79,7 +80,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
         super.viewDidLayoutSubviews()
         
         if didAppearOnce == false {
-            circlePlaceholderView.roundedCorners = true // do it here to fix jumping of the rounded border
+            layoutCirclePlaceholderView() // do it here to fix jumping of the rounded border
         }
     }
     
@@ -103,6 +104,11 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
     
     func setPhoto(_ value: UIImage?) {
         circlePlaceholderImageView.image = value ?? getStyledCirclePlaceholder()
+        
+        // without delay rounded border aroudn photo is disturted
+        debounce(delay: 0.1) {
+            self.layoutCirclePlaceholderView()
+        }
     }
     
     
@@ -209,8 +215,6 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
                     return nil
                 }
             }()
-            
-           
         }
         
         circlePlaceholderImageView.image = getStyledCirclePlaceholder()
@@ -245,6 +249,10 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
         self.view.addSubview(cameraTouchView)
         cameraTouchView.frameSize = .init(width: 55, height: 55)
         cameraTouchView.frameCenter = self.view.convert(cameraImageView.frame, from: cameraImageView.superview).center
+    }
+    
+    private func layoutCirclePlaceholderView() {
+        circlePlaceholderView.roundedCorners = true
     }
     
     // Targets

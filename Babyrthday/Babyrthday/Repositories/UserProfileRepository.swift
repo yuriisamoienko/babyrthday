@@ -66,7 +66,9 @@ final class UserProfileRepository: UserProfileRepositoryProtocol {
     
     // MARK: Private Functions
     
-    private init() {}
+    private init() {
+        
+    }
     
     func setUserDefaultsValue(_ value: Any?, forKey key: UserDefaultKeys) {
         userDefaults.setValue(value, forKey: key.rawValue)
@@ -74,7 +76,7 @@ final class UserProfileRepository: UserProfileRepositoryProtocol {
     }
 }
 
-enum UserDefaultKeys: String {
+enum UserDefaultKeys: String, CaseIterable {
     case personName
     case personBirthday
     case personPhoto

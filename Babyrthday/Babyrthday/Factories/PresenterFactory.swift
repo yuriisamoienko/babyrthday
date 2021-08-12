@@ -7,13 +7,20 @@
 
 import Foundation
 
-final class PresenterFactory {
+protocol PresenterFactoryProtocol {
+    
+    func createDetailsPresenter(in view: DetailsPresenterViewProtocol) -> DetailsPresenterProtocol
+    func createBirthdayScreenPresenter(in view: BirthdayScreenViewProtocol) -> BirthdayScreenPresenterProtocol
+    
+}
+
+final class PresenterFactory: PresenterFactoryProtocol {
     
     // MARK: Public Properties
     
-    static let shared = PresenterFactory()
+    static let shared: PresenterFactoryProtocol = PresenterFactory() // TODO @Inject
     
-    // MARK: Public Functions
+    // MARK: PresenterFactoryProtocol
     
     func createDetailsPresenter(in view: DetailsPresenterViewProtocol) -> DetailsPresenterProtocol {
         let result = DetailsPresenter(view: view)
