@@ -136,6 +136,21 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
         return result
     }
     
+    private func getStyledBackgroundColor() -> UIColor {
+        let result: UIColor
+        switch colorStyle {
+        case 0:
+            result = .init(hexString: "D5EFF4")
+        case 1:
+            result = .init(hexString: "BEE4DB")
+        case 2:
+            result = .init(hexString: "FFECC7")
+        default:
+            result = .appThemeBackground
+        }
+        return result
+    }
+    
     private func acceptableAgeValue(from value: Int) -> Int {
         let number: Int = max(0, min(value, 99)) // keep between 0 and 99
         return number
@@ -218,6 +233,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
         }
         
         circlePlaceholderImageView.image = getStyledCirclePlaceholder()
+        view.backgroundColor = getStyledBackgroundColor()
         
         shareNewsButton.setTitle(.localize.shareTheNews.capitalizingFirstLetter(), for: .normal)
     }
