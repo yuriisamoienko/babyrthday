@@ -151,6 +151,21 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
         return result
     }
     
+    private func getStyledPhotoBorderColor() -> UIColor {
+        let result: UIColor
+        switch colorStyle {
+        case 0:
+            result = .init(hexString: "7FCDDE") // blue
+        case 1:
+            result = .init(hexString: "63BCA5") // green
+        case 2:
+            result = .init(hexString: "FFB439") // yellow
+        default:
+            result = .appThemeBackground
+        }
+        return result
+    }
+    
     private func acceptableAgeValue(from value: Int) -> Int {
         let number: Int = max(0, min(value, 99)) // keep between 0 and 99
         return number
@@ -232,7 +247,12 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
             }()
         }
         
-        circlePlaceholderImageView.image = getStyledCirclePlaceholder()
+        if let imageView = circlePlaceholderImageView {
+            imageView.image = getStyledCirclePlaceholder()
+        }
+        
+        circlePlaceholderView.borderColor = getStyledPhotoBorderColor()
+        
         view.backgroundColor = getStyledBackgroundColor()
         
         shareNewsButton.setTitle(.localize.shareTheNews.capitalizingFirstLetter(), for: .normal)
