@@ -98,7 +98,7 @@ final class BirthdayScreenViewController: UIViewController, BirthdayScreenViewPr
     
     func setAgeYears(_ value: Int) {
         let number = acceptableAgeValue(from: value)
-        titleBottomLabel.text = .localize.someYearOld(number).uppercased()
+        titleBottomLabel.text = .localize.someYearOld(number).uppercased() // "Describing plurals of noun with variable amount is not a trivial task. Moreover, it’s not a software engineer task from the beginning."
         setAgeNumber(value)
     }
     

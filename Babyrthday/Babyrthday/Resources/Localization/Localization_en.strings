@@ -18,3 +18,5 @@
 "k_today_smn_is" = "today %@ is";
 "k_some_month_old" = "month old";
 "k_some_year_old" = "year old";
+"k_months_old" = "months old";
+"k_years_old" = "years old";
